@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0б viewport-fit=cover"
+    />
+    <title>Игра - Дуэль</title>
+    <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col items-center justify-between p-4">
+    <!-- Верхняя панель здоровья -->
+    <div
+      class="w-full max-w-lg bg-slate-800 rounded-lg p-4 mb-4 flex justify-between text-center"
+    >
+      <div class="text-blue-400">
+        Игрок A<br /><span id="hpA" class="text-xl">10</span>
+      </div>
+      <div class="text-red-400">
+        Игрок B<br /><span id="hpB" class="text-xl">10</span>
+      </div>
+    </div>
+
+    <!-- Игровое поле -->
+    <div class="grid grid-cols-7 gap-1 w-full">
+      <!-- Зона Игрока A -->
+      <div class="col-span-3 grid grid-cols-3 gap-1">
+        <div class="grid-cell player-a" data-pos="0-0"></div>
+        <div class="grid-cell player-a" data-pos="0-1"></div>
+        <div class="grid-cell player-a" data-pos="0-2"></div>
+        <div class="grid-cell player-a" data-pos="1-0"></div>
+        <div class="grid-cell player-a" data-pos="1-1"></div>
+        <div class="grid-cell player-a" data-pos="1-2"></div>
+        <div class="grid-cell player-a" data-pos="2-0"></div>
+        <div class="grid-cell player-a" data-pos="2-1"></div>
+        <div class="grid-cell player-a" data-pos="2-2"></div>
+      </div>
+
+      <!-- Разделитель -->
+      <div
+        class="col-span-1 border-l-4 border-dashed border-yellow-400 mx-auto h-full"
+      ></div>
+
+      <!-- Зона Игрока B -->
+      <div class="col-span-3 grid grid-cols-3 gap-1">
+        <div class="grid-cell player-b" data-pos="0-3"></div>
+        <div class="grid-cell player-b" data-pos="0-4"></div>
+        <div class="grid-cell player-b" data-pos="0-5"></div>
+        <div class="grid-cell player-b" data-pos="1-3"></div>
+        <div class="grid-cell player-b" data-pos="1-4"></div>
+        <div class="grid-cell player-b" data-pos="1-5"></div>
+        <div class="grid-cell player-b" data-pos="2-3"></div>
+        <div class="grid-cell player-b" data-pos="2-4"></div>
+        <div class="grid-cell player-b" data-pos="2-5"></div>
+      </div>
+    </div>
+
+    <!-- Нижняя панель управления -->
+    <div class="w-full max-w-lg bg-slate-800 rounded-lg p-4">
+      <h3 class="text-center mb-4 text-xs">Выберите действие:</h3>
+      <div class="flex space-x-2 mb-4">
+        <button
+          id="moveBtn"
+          class="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded w-full text-xs"
+        >
+          Перемещение
+        </button>
+        <button
+          id="attackBtn"
+          class="bg-red-600 hover:bg-red-700 px-3 py-2 rounded w-full text-xs"
+        >
+          Атака
+        </button>
+        <button
+          id="skipBtn"
+          class="bg-gray-600 hover:bg-gray-700 px-3 py-2 rounded w-full text-xs"
+        >
+          Пропуск
+        </button>
+      </div>
+
+      <div id="movementControls" class="hidden mb-4">
+        <p class="text-xs text-center mb-2">Направление:</p>
+        <div class="grid grid-cols-3 gap-2 place-items-center">
+          <div></div>
+          <button
+            onclick="window.selectDirection('up')"
+            class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded"
+          >
+            ↑
+          </button>
+          <div></div>
+          <button
+            onclick="window.selectDirection('left')"
+            class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded"
+          >
+            ←
+          </button>
+          <div></div>
+          <button
+            onclick="window.selectDirection('right')"
+            class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded"
+          >
+            →
+          </button>
+          <div></div>
+          <button
+            onclick="window.selectDirection('down')"
+            class="bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded"
+          >
+            ↓
+          </button>
+          <div></div>
+        </div>
+      </div>
+
+      <button
+        id="confirmBtn"
+        class="w-full bg-green-600 hover:bg-green-700 py-3 rounded font-bold"
+      >
+        Подтвердить выбор
+      </button>
+    </div>
+
+    <script src="src/main.js" type="module"></script>
+  </body>
+</html>
