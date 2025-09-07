@@ -148,7 +148,7 @@ renderPlayers();
 document.addEventListener('DOMContentLoaded', () => {
   const tg = window.Telegram.WebApp;
   tg.ready(); // сообщаем клиенту, что можно скрыть прелоадер
-  tg.expand(); // раскрыть на весь экран (опционально)
+  tg.requestFullscreen(); // раскрыть на весь экран (опционально)
   if (tg.initDataUnsafe) {
     document.getElementById('userInfo').innerHTML = JSON.stringify(tg.initDataUnsafe, null, 2);
   }
