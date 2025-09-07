@@ -1,4 +1,6 @@
 import './style.css';
+
+const DEBUG = false
 // Инициализация состояния игры
 let gameState = {
   players: {
@@ -24,13 +26,15 @@ function renderPlayers() {
     const posCell = cell.dataset.pos;
     const row = Number(posCell.split('-')[0]);
     const col = Number(posCell.split('-')[1]);
-    cell.innerHTML = `${row}-${col}`;
+    if (DEBUG) {
+      cell.innerHTML = `${row}-${col}`;
+    }
     if (
       row === gameState.players.A.pos[0] &&
       col === gameState.players.A.pos[1]
     ) {
       cell.innerHTML = `
-              <div class="opacity-75 absolute -translate-y-4">${gameState.players.A.pos}</div>
+              <div class="opacity-75 absolute -translate-y-4">${DEBUG ? gameState.players.A.pos : ''}</div>
               <div class="w-4 h-4 rounded-full bg-white"></div>
           `;
     }
@@ -40,7 +44,7 @@ function renderPlayers() {
       col === gameState.players.B.pos[1]
     ) {
       cell.innerHTML = `
-              <div class="opacity-75 absolute -translate-y-4">${gameState.players.B.pos}</div>
+              <div class="opacity-75 absolute -translate-y-4">${DEBUG ?gameState.players.B.pos : ''}</div>
               <div class="w-4 h-4 rounded-full bg-black"></div>
           `;
     }
