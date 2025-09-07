@@ -146,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
   tg.ready(); // сообщаем клиенту, что можно скрыть прелоадер
   tg.expand(); // раскрыть на весь экран (опционально)
   if (tg.initDataUnsafe) {
-    document.getElementById('userInfo').innerHTML = JSON.stringify(tg, null, 2);
+    document.getElementById('userInfo').innerHTML = JSON.stringify(tg.initDataUnsafe, null, 2);
   }
-  console.log('user:', tg.initDataUnsafe?.user);
 });
