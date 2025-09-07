@@ -14,10 +14,10 @@
       rel="stylesheet"
     />
   </head>
-  <body class="min-h-screen flex flex-col items-center justify-between p-4">
+  <body class="min-h-screen flex flex-col items-center justify-start p-4 gap-4">
     <!-- Верхняя панель здоровья -->
     <div
-      class="w-full max-w-lg bg-slate-800 rounded-lg p-4 mb-4 flex justify-between text-center"
+      class="w-full bg-slate-800 rounded-lg p-4 flex justify-between text-center"
     >
       <div class="text-blue-400">
         Игрок A<br /><span id="hpA" class="text-xl">10</span>
@@ -26,6 +26,11 @@
         Игрок B<br /><span id="hpB" class="text-xl">10</span>
       </div>
     </div>
+
+    <pre
+      class="w-full max-h-40 overflow-auto bg-slate-800 rounded-lg p-4 text-xs" id="userInfo"
+    >
+    </pre>
 
     <!-- Игровое поле -->
     <div class="grid grid-cols-7 gap-1 w-full">
@@ -62,7 +67,7 @@
     </div>
 
     <!-- Нижняя панель управления -->
-    <div class="w-full max-w-lg bg-slate-800 rounded-lg p-4">
+    <div class="w-full bg-slate-800 rounded-lg p-4">
       <h3 class="text-center mb-4 text-xs">Выберите действие:</h3>
       <div class="flex space-x-2 mb-4">
         <button
